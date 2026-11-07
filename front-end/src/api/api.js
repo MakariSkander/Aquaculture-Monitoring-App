@@ -17,9 +17,9 @@ axiosInstance.interceptors.request.use(
     }
   );
 
-export const loginapi = async (email, password ) =>{
+export const loginapi = async (credentials) =>{
     try{
-       const response = await axiosInstance.post ('/users/login', email, password);
+       const response = await axiosInstance.post ('/users/login', credentials);
         if (response.status  == 200){
             console.log (response.data)
             localStorage.setItem('accessToken', response.data.accessToken);
@@ -27,7 +27,7 @@ export const loginapi = async (email, password ) =>{
             return response.data
         }
         else {
-            console.log("login faild")
+            console.log("Request failed")
 
         }
 
@@ -46,7 +46,7 @@ export const getphapi = async (month) =>{
             return response.data
         }
         else {
-            console.log("login faild")
+            console.log("Request failed")
 
         }
 
@@ -58,13 +58,13 @@ export const getphapi = async (month) =>{
 //temperature function 
 export const gettemp = async (id) =>{
     try{
-       const response = await axiosInstance.get ('/gettempvalue/${id}',);
+       const response = await axiosInstance.get (`/sensor/gettempvalue/${id}`);
         if (response.status  == 200){
             console.log (response.data)
             return response.data
         }
         else {
-            console.log("login faild")
+            console.log("Request failed")
 
         }
 
@@ -78,13 +78,13 @@ export const gettemp = async (id) =>{
 //turbidity function 
 export const getturb = async (id) =>{
     try{
-       const response = await axiosInstance.get ('//getturbvalue/${id}',);
+       const response = await axiosInstance.get (`/sensor/getturbvalue/${id}`);
         if (response.status  == 200){
             console.log (response.data)
             return response.data
         }
         else {
-            console.log("login faild")
+            console.log("Request failed")
 
         }
 
@@ -99,13 +99,13 @@ export const getturb = async (id) =>{
 //dissolved oxygen function 
 export const getoxygen = async (id) =>{
     try{
-       const response = await axiosInstance.get ('/getoxygenvalue/${id}',);
+       const response = await axiosInstance.get (`/sensor/getoxygenvalue/${id}`);
         if (response.status  == 200){
             console.log (response.data)
             return response.data
         }
         else {
-            console.log("login faild")
+            console.log("Request failed")
 
         }
 
@@ -115,7 +115,7 @@ export const getoxygen = async (id) =>{
     }
 };
 
-//dissolved oxygen function 
+//latest sensor values
 
 export const getLastValues = async (id) => {
     try {

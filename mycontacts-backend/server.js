@@ -1,5 +1,5 @@
 const express = require("express");
-const erroHandler = require("./middlewatre/errorhandler");
+const erroHandler = require("./middlewatre/errorHandler");
 const connectDb = require("./config/dbConnection");
 var cors = require('cors')
 const app = express();
